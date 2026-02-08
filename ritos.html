@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Litúrgico Católico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:wght@400;500;600&display=swap');
+        
+        body {
+            font-family: 'Lora', serif;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .liturgical-year-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                #9333ea 0deg 90deg,
+                #059669 90deg 180deg,
+                #dc2626 180deg 270deg,
+                #f59e0b 270deg 360deg
+            );
+            position: relative;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.5s ease-in-out;
+            background: transparent;
+        }
+        
+        .header.scrolled {
+            background: rgba(43, 77, 115, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header.hidden {
+            transform: translateY(-100%) !important;
+            opacity: 0;
+        }
+        
+        .header.show {
+            transform: translateY(0) !important;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header Fixo -->
+    <nav class="header" id="header">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-white font-bold text-xl flex items-center gap-2">
+                    <span class="text-2xl">🕯️</span>
+                    <span class="font-cinzel">Coroinhas</span>
+                </div>
+                <div class="flex gap-6 md:gap-8">
+                    <a href="index.html" class="text-white hover:text-yellow-300 transition font-semibold">Início</a>
+                    <a href="coroinhas.html" class="text-white hover:text-yellow-300 transition font-semibold">História</a>
+                    <a href="ritos.html" class="text-white hover:text-yellow-300 transition font-semibold">Objetos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative text-white py-40 px-4 overflow-hidden min-h-screen flex items-center">
+        <!-- Imagem de fundo -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?q=80&w=2000" 
+                 alt="Interior de Igreja Católica" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+        </div>
+        
+        <!-- Conteúdo -->
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 fade-in drop-shadow-lg">Guia Litúrgico Católico</h1>
+            <p class="text-xl md:text-2xl mb-8 drop-shadow-md fade-in">Descubra os mistérios e rituais da fé católica</p>
+            <div class="flex justify-center gap-4 flex-wrap fade-in">
+                <button onclick="scrollToSection('sacramentos')" class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-700 transition backdrop-blur-sm bg-white/10">
+                    Explorar Sacramentos
+                </button>
+                <button onclick="scrollToSection('missa')" class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-700 transition backdrop-blur-sm bg-white/10">
+                    Entender a Missa
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Introdução -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">O que é a Liturgia?</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                A liturgia é o coração pulsante da vida católica. Mais do que rituais formais, 
+                é o encontro vivo entre Deus e sua Igreja, onde a obra da redenção se torna presente 
+                através de sinais sagrados e celebrações que atravessam séculos de tradição.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sacramentos -->
+    <section id="sacramentos" class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Os Sete Sacramentos</h2>
+            
+            <!-- Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button onclick="showCategory('iniciacao')" id="tab-iniciacao" class="tab-active px-6 py-3 rounded-lg font-semibold transition">
+                    Iniciação
+                </button>
+                <button onclick="showCategory('cura')" id="tab-cura" class="px-6 py-3 rounded-lg font-semibold bg-white text-gray-700 hover:bg-gray-100 transition">
+                    Cura
+                </button>
+                <button onclick="showCategory('servico')" id="tab-servico" class="px-6 py-3 rounded-lg font-semibold bg-white text-gray-700 hover:bg-gray-100 transition">
+                    Serviço
+                </button>
+            </div>
+
+            <!-- Conteúdo dos Sacramentos -->
+            <div id="sacramentos-content" class="grid md:grid-cols-3 gap-6">
+                <!-- Iniciação -->
+                <div class="sacramento-card categoria-iniciacao bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <span class="text-3xl">💧</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 text-center mb-3">Batismo</h3>
+                    <p class="text-gray-600 mb-4">Porta de entrada para a vida cristã. Através da água, o catecúmeno morre com Cristo e ressurge como nova criatura.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-blue-900 mb-2">Matéria:</p>
+                        <p class="text-sm text-gray-700">Água natural</p>
+                        <p class="text-sm font-semibold text-blue-900 mb-2 mt-3">Efeito:</p>
+                        <p class="text-sm text-gray-700">Remissão dos pecados e filiação divina</p>
+                    </div>
+                </div>
+
+                <div class="sacramento-card categoria-iniciacao bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <span class="text-3xl">🕊️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 text-center mb-3">Confirmação</h3>
+                    <p class="text-gray-600 mb-4">Aperfeiçoa a graça batismal, conferindo o Espírito Santo para fortalecer a fé e o testemunho cristão.</p>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-red-900 mb-2">Matéria:</p>
+                        <p class="text-sm text-gray-700">Santo Crisma (óleo + bálsamo)</p>
+                        <p class="text-sm font-semibold text-red-900 mb-2 mt-3">Efeito:</p>
+                        <p class="text-sm text-gray-700">Plenitude dos dons do Espírito Santo</p>
+                    </div>
+                </div>
+
+                <div class="sacramento-card categoria-iniciacao bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <span class="text-3xl">🍞</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 text-center mb-3">Eucaristia</h3>
+                    <p class="text-gray-600 mb-4">O sacramento dos sacramentos. Memorial do sacrifício de Cristo que se torna presente sob as espécies de pão e vinho.</p>
+                    <div class="bg-amber-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-amber-900 mb-2">Matéria:</p>
+                        <p class="text-sm text-gray-700">Pão de trigo e vinho da videira</p>
+                        <p class="text-sm font-semibold text-amber-900 mb-2 mt-3">Efeito:</p>
+                        <p class="text-sm text-gray-700">União íntima com Cristo</p>
+                    </div>
+                </div>
+
+                <!-- Cura -->
+                <div class="sacramento-card categoria-cura hidden bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <span class="text-3xl">🙏</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 text-center mb-3">Penitência</h3>
+                    <p class="text-gray-600 mb-4">Sacramento da reconciliação com Deus e a Igreja. Restaura a graça perdida pelo pecado.</p>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-green-900 mb-2">Elementos necessários:</p>
+                        <p class="text-sm text-gray-700">Contrição, confissão, propósito de emenda</p>
+                        <p class="text-sm font-semibold text-green-900 mb-2 mt-3">Efeito:</p>
+                        <p class="text-sm text-gray-700">Perdão dos pecados e reconciliação</p>
+                    </div>
+                </div>
+
+                <div class="sacramento-card categoria-cura hidden bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <span class="text-3xl">⚕️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 text-center mb-3">Unção dos Enfermos</h3>
+                    <p class="text-gray-600 mb-4">Conforto para os doentes e idosos, unindo seu sofrimento à paixão de Cristo.</p>
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-purple-900 mb-2">Matéria:</p>
+                        <p class="text-sm text-gray-700">Óleo dos enfermos abençoado</p>
+                        <p class="text-sm font-semibold text-purple-900 mb-2 mt-3">Efeito:</p>
+                        <p class="text-sm text-gray-700">Força, paz e coragem espiritual</p>
+                    </div>
+                </div>
+
+                <!-- Serviço -->
+                <div class="sacramento-card categoria-servico hidden bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <span class="text-3xl">✋</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 text-center mb-3">Ordem</h3>
+                    <p class="text-gray-600 mb-4">Sacramento do ministério apostólico em três graus: episcopado, presbiterado e diaconado.</p>
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-indigo-900 mb-2">Rito:</p>
+                        <p class="text-sm text-gray-700">Imposição das mãos pelo bispo</p>
+                        <p class="text-sm font-semibold text-indigo-900 mb-2 mt-3">Efeito:</p>
+                        <p class="text-sm text-gray-700">Caráter sacramental permanente</p>
+                    </div>
+                </div>
+
+                <div class="sacramento-card categoria-servico hidden bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <span class="text-3xl">💑</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 text-center mb-3">Matrimônio</h3>
+                    <p class="text-gray-600 mb-4">Aliança entre homem e mulher para comunidade de vida e amor, aberta à procriação.</p>
+                    <div class="bg-pink-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-pink-900 mb-2">Ministros:</p>
+                        <p class="text-sm text-gray-700">Os próprios esposos</p>
+                        <p class="text-sm font-semibold text-pink-900 mb-2 mt-3">Efeito:</p>
+                        <p class="text-sm text-gray-700">Graça para viver o amor conjugal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A Missa -->
+    <section id="missa" class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-6">A Estrutura da Santa Missa</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+                A Missa se articula em duas mesas: a da Palavra de Deus e a do Corpo de Cristo, 
+                formando um único ato de culto.
+            </p>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div class="timeline-line hidden md:block"></div>
+                
+                <div class="space-y-8">
+                    <!-- Ritos Iniciais -->
+                    <div class="md:flex items-center gap-8 fade-in">
+                        <div class="md:w-1/2 bg-purple-50 p-6 rounded-xl shadow-md mb-4 md:mb-0">
+                            <div class="flex items-center mb-3">
+                                <span class="text-3xl mr-3">🚪</span>
+                                <h3 class="text-2xl font-bold text-purple-900">1. Ritos Iniciais</h3>
+                            </div>
+                            <p class="text-gray-700">Entrada, saudação, ato penitencial, Kyrie, Glória e oração coleta.</p>
+                            <p class="text-sm text-purple-800 mt-2 font-semibold">Objetivo: Preparar a assembleia</p>
+                        </div>
+                        <div class="md:w-1/2"></div>
+                    </div>
+
+                    <!-- Liturgia da Palavra -->
+                    <div class="md:flex items-center gap-8 fade-in">
+                        <div class="md:w-1/2"></div>
+                        <div class="md:w-1/2 bg-blue-50 p-6 rounded-xl shadow-md">
+                            <div class="flex items-center mb-3">
+                                <span class="text-3xl mr-3">📖</span>
+                                <h3 class="text-2xl font-bold text-blue-900">2. Liturgia da Palavra</h3>
+                            </div>
+                            <p class="text-gray-700">Leituras bíblicas, salmo, evangelho e homilia.</p>
+                            <p class="text-sm text-blue-800 mt-2 font-semibold">Cristo anuncia o Evangelho</p>
+                        </div>
+                    </div>
+
+                    <!-- Liturgia Eucarística -->
+                    <div class="md:flex items-center gap-8 fade-in">
+                        <div class="md:w-1/2 bg-amber-50 p-6 rounded-xl shadow-md mb-4 md:mb-0">
+                            <div class="flex items-center mb-3">
+                                <span class="text-3xl mr-3">⛪</span>
+                                <h3 class="text-2xl font-bold text-amber-900">3. Liturgia Eucarística</h3>
+                            </div>
+                            <p class="text-gray-700">Preparação das oferendas, Oração Eucarística (consagração) e Comunhão.</p>
+                            <p class="text-sm text-amber-800 mt-2 font-semibold">Ápice da celebração</p>
+                        </div>
+                        <div class="md:w-1/2"></div>
+                    </div>
+
+                    <!-- Ritos Finais -->
+                    <div class="md:flex items-center gap-8 fade-in">
+                        <div class="md:w-1/2"></div>
+                        <div class="md:w-1/2 bg-green-50 p-6 rounded-xl shadow-md">
+                            <div class="flex items-center mb-3">
+                                <span class="text-3xl mr-3">🌍</span>
+                                <h3 class="text-2xl font-bold text-green-900">4. Ritos Finais</h3>
+                            </div>
+                            <p class="text-gray-700">Bênção final e envio em missão.</p>
+                            <p class="text-sm text-green-800 mt-2 font-semibold">Ida, levai o Evangelho!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ano Litúrgico -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-6">O Ano Litúrgico</h2>
+            <p class="text-center text-gray-600 mb-12">
+                A Igreja santifica o tempo celebrando os mistérios de Cristo ao longo do ano
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="flex justify-center">
+                    <div class="liturgical-year-circle flex items-center justify-center">
+                        <div class="bg-white w-32 h-32 rounded-full flex items-center justify-center shadow-xl">
+                            <span class="text-4xl">✝️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-purple-100 p-4 rounded-lg border-l-4 border-purple-600">
+                        <h4 class="font-bold text-purple-900 mb-1">Advento</h4>
+                        <p class="text-sm text-gray-700">Preparação para o Natal</p>
+                    </div>
+                    <div class="bg-green-100 p-4 rounded-lg border-l-4 border-green-600">
+                        <h4 class="font-bold text-green-900 mb-1">Tempo Comum</h4>
+                        <p class="text-sm text-gray-700">Crescimento na vida cristã</p>
+                    </div>
+                    <div class="bg-red-100 p-4 rounded-lg border-l-4 border-red-600">
+                        <h4 class="font-bold text-red-900 mb-1">Quaresma e Páscoa</h4>
+                        <p class="text-sm text-gray-700">Conversão e ressurreição</p>
+                    </div>
+                    <div class="bg-amber-100 p-4 rounded-lg border-l-4 border-amber-600">
+                        <h4 class="font-bold text-amber-900 mb-1">Tempo do Natal</h4>
+                        <p class="text-sm text-gray-700">Celebração da Encarnação</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ciclos de Leitura -->
+            <div class="mt-12 grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-3">Ano A</h4>
+                    <p class="text-gray-600">Evangelho de <strong>Mateus</strong></p>
+                    <p class="text-sm text-gray-500 mt-2">Reino de Deus e profecias</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-3">Ano B</h4>
+                    <p class="text-gray-600">Evangelho de <strong>Marcos</strong></p>
+                    <p class="text-sm text-gray-500 mt-2">Messianismo sofrido</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-3">Ano C</h4>
+                    <p class="text-gray-600">Evangelho de <strong>Lucas</strong></p>
+                    <p class="text-sm text-gray-500 mt-2">Misericórdia e Espírito Santo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Raízes Históricas -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Raízes Históricas</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-l-4 border-blue-600">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">🕎 Herança Judaica</h3>
+                    <p class="text-gray-700">
+                        A Eucaristia está intimamente relacionada com a Páscoa judaica (Pessach). 
+                        O conceito de Berakah (bênção) é a raiz da Oração Eucarística, e elementos 
+                        como o "Santo, Santo, Santo" vêm da liturgia sinagogal.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl border-l-4 border-purple-600">
+                    <h3 class="text-xl font-bold text-purple-900 mb-2">⛪ Igreja Primitiva</h3>
+                    <p class="text-gray-700">
+                        Nos primeiros séculos, a liturgia era celebrada em grego. No século IV, 
+                        sob o Papa Dâmaso, o latim foi adotado em Roma, criando as grandes famílias 
+                        litúrgicas que conhecemos hoje.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl border-l-4 border-green-600">
+                    <h3 class="text-xl font-bold text-green-900 mb-2">📜 Concílio Vaticano II</h3>
+                    <p class="text-gray-700">
+                        A reforma litúrgica não foi ruptura, mas restauração. Introduziu a língua 
+                        vernácula e valorizou a participação ativa dos fiéis, mantendo a fé na 
+                        presença real de Cristo e no caráter sacrificial da Missa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <h3 class="text-2xl font-bold mb-4">Continue sua jornada de fé</h3>
+            <p class="mb-6 opacity-90">
+                A liturgia é fonte e ápice da vida cristã. Que este guia inspire você a participar 
+                mais profundamente dos sagrados mistérios.
+            </p>
+            <p class="text-sm opacity-75">
+                "A liturgia é o exercício do múnus sacerdotal de Cristo" - Sacrosanctum Concilium
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showCategory(category) {
+            // Esconder todos os cards
+            document.querySelectorAll('.sacramento-card').forEach(card => {
+                card.classList.add('hidden');
+            });
+
+            // Mostrar cards da categoria selecionada
+            document.querySelectorAll('.categoria-' + category).forEach(card => {
+                card.classList.remove('hidden');
+            });
+
+            // Atualizar tabs
+            document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+                tab.classList.remove('tab-active');
+                tab.classList.add('bg-white', 'text-gray-700');
+            });
+
+            const activeTab = document.getElementById('tab-' + category);
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('bg-white', 'text-gray-700');
+        }
+
+        // Animação de fade-in ao scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('.card-hover, .fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        let lastScroll = 0;
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            console.log('Scroll:', currentScroll); // Para debug
+            
+            // Adiciona fundo quando rolar mais de 50px
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+                console.log('Added scrolled class');
+            } else {
+                header.classList.remove('scrolled');
+                console.log('Removed scrolled class');
+            }
+            
+            // Esconde header ao rolar para baixo, mostra ao rolar para cima
+            if (currentScroll > lastScroll && currentScroll > 800) {
+                header.classList.add('hidden');
+                header.classList.remove('show');
+                console.log('Header hidden');
+            } else if (currentScroll < lastScroll) {
+                header.classList.remove('hidden');
+                header.classList.add('show');
+                console.log('Header shown');
+            }
+            
+            lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+        });
+    </script>
+</body>
+</html>

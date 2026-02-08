@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos e Vestes Litúrgicas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hero-section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('igreja.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .content-section {
+            background-color: #f9fafb;
+            padding: 4rem 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .category-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .divider {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 4rem 0;
+        }
+            /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.5s ease-in-out;
+            background: transparent;
+        }
+        
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header.hidden {
+            transform: translateY(-100%) !important;
+            opacity: 0;
+        }
+        
+        .header.show {
+            transform: translateY(0) !important;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Fixo -->
+    <nav class="header" id="header">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-white font-bold text-xl flex items-center gap-2">
+                    <span class="text-2xl">🕯️</span>
+                    <span class="font-cinzel">Coroinhas</span>
+                </div>
+                <div class="flex gap-6 md:gap-8">
+                    <a href="index.html" class="text-white hover:text-yellow-300 transition font-semibold">Início</a>
+                    <a href="coroinhas.html" class="text-white hover:text-yellow-300 transition font-semibold">História</a>
+                    <a href="ritos.html" class="text-white hover:text-yellow-300 transition font-semibold">Ritos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Seção Hero -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">Objetos e Vestes Litúrgicas</h1>
+            <p class="text-xl md:text-2xl text-white mb-4">Conheça os sagrados instrumentos da nossa fé</p>
+            <p class="text-lg md:text-xl text-white opacity-90">Verdadeiros sinais e símbolos do sobrenatural</p>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- VASOS SAGRADOS -->
+    <section class="content-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="category-title">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Vasos Sagrados</h2>
+                <p class="text-lg md:text-xl opacity-90">Receptáculos do Divino - objetos que entram em contato direto com o Corpo e Sangue de Cristo</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cálice -->
+                <div class="card">
+                    <img src="cálice.jpg" alt="Cálice" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Cálice</h3>
+                        <p class="text-gray-600 mb-3">O mais digno entre todos os vasos sagrados. Contém o vinho que se torna o Preciosíssimo Sangue de Cristo.</p>
+                        <p class="text-sm text-gray-500 italic">Fabricado em materiais nobres como ouro ou prata, dourado internamente.</p>
+                    </div>
+                </div>
+
+                <!-- Patena -->
+                <div class="card">
+                    <img src="patena.jpg" alt="Patena" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Patena</h3>
+                        <p class="text-gray-600 mb-3">Pequeno prato de metal precioso que acompanha o cálice. Destina-se a segurar a hóstia grande durante a Missa.</p>
+                        <p class="text-sm text-gray-500 italic">Deve ser benzida antes do uso inaugural por um bispo ou sacerdote.</p>
+                    </div>
+                </div>
+
+                <!-- Âmbula -->
+                <div class="card">
+                    <img src="ambula.jpg" alt="Âmbula" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Âmbula (Cibório)</h3>
+                        <p class="text-gray-600 mb-3">Vaso sagrado para conservação e distribuição das hóstias consagradas aos fiéis. Possui copa larga e tampa com cruz.</p>
+                        <p class="text-sm text-gray-500 italic">Quando contém a reserva eucarística, é coberta pelo conopeu (véu branco).</p>
+                    </div>
+                </div>
+
+                <!-- Ostensório -->
+                <div class="card">
+                    <img src="ostensório.jpg" alt="Ostensório" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Ostensório (Custódia)</h3>
+                        <p class="text-gray-600 mb-3">Objeto de ourivesaria monumental para exposição solene do Santíssimo Sacramento. Formato de sol radiante.</p>
+                        <p class="text-sm text-gray-500 italic">Possui a luneta no centro onde a hóstia é fixada para visualização dos fiéis.</p>
+                    </div>
+                </div>
+
+                <!-- Teca -->
+                <div class="card">
+                    <img src="teca.jpg" alt="Teca" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Teca</h3>
+                        <p class="text-gray-600 mb-3">Pequeno estojo dourado para transporte da Eucaristia a doentes e moribundos.</p>
+                        <p class="text-sm text-gray-500 italic">Garante que o Senhor chegue dignamente aos que não podem ir ao templo.</p>
+                    </div>
+                </div>
+
+                <!-- Galhetas -->
+                <div class="card">
+                    <img src="galhetas.jpg" alt="Galhetas" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Galhetas</h3>
+                        <p class="text-gray-600 mb-3">Dois pequenos vasos de vidro ou metal que contêm água e vinho para o sacrifício.</p>
+                        <p class="text-sm text-gray-500 italic">Elementos essenciais para a celebração eucarística.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ALFAIAS LITÚRGICAS -->
+    <section class="content-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="category-title">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Alfaias Litúrgicas</h2>
+                <p class="text-lg md:text-xl opacity-90">Pequenos panos de linho que auxiliam no manuseio dos vasos sagrados</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Corporal -->
+                <div class="card">
+                    <img src="corporal.JPG" alt="Corporal" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Corporal</h3>
+                        <p class="text-gray-600 mb-3">Tecido quadrado de linho puro estendido sobre o altar durante o Ofertório. Sobre ele repousam o Corpo e Sangue do Senhor.</p>
+                        <p class="text-sm text-gray-500 italic">Do latim "corporalis" - do corpo. Dobrado especialmente para recolher partículas.</p>
+                    </div>
+                </div>
+
+                <!-- Sanguíneo -->
+                <div class="card">
+                    <img src="sanguinio.jpg" alt="Sanguíneo" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Sanguíneo (Purificatório)</h3>
+                        <p class="text-gray-600 mb-3">Toalha retangular menor usada para limpar o interior do cálice, a boca e os dedos do celebrante.</p>
+                        <p class="text-sm text-gray-500 italic">Assegura que nenhum vestígio das sagradas espécies seja negligenciado.</p>
+                    </div>
+                </div>
+
+                <!-- Pala -->
+                <div class="card">
+                    <img src="pala.jpg" alt="Pala" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Pala</h3>
+                        <p class="text-gray-600 mb-3">Cartão quadrado revestido de linho branco para cobrir o cálice e a patena.</p>
+                        <p class="text-sm text-gray-500 italic">Protege as espécies eucarísticas de poeira ou insetos.</p>
+                    </div>
+                </div>
+
+                <!-- Manustérgio -->
+                <div class="card">
+                    <img src="manustergio.jpg" alt="Manustérgio" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Manustérgio</h3>
+                        <p class="text-gray-600 mb-3">Toalha utilizada no rito do lavabo, quando o sacerdote lava as mãos em sinal de purificação espiritual.</p>
+                        <p class="text-sm text-gray-500 italic">Usada antes de iniciar a Liturgia Eucarística.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- VESTES LITÚRGICAS -->
+    <section class="content-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="category-title">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Vestes Litúrgicas</h2>
+                <p class="text-lg md:text-xl opacity-90">Paramentos que revestem o ministro com a autoridade de Cristo</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Alva -->
+                <div class="card">
+                    <img src="alva.jpg" alt="Alva" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Alva (Túnica)</h3>
+                        <p class="text-gray-600 mb-3">Veste branca e longa comum a todos os ministros, desde o coroinha até o Papa.</p>
+                        <p class="text-sm text-gray-500 italic">Do latim "albus" (branco). Simboliza pureza e a brancura da alma lavada pelo Batismo.</p>
+                    </div>
+                </div>
+
+                <!-- Cíngulo -->
+                <div class="card">
+                    <img src="cingulo.jpg" alt="Cíngulo" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Cíngulo</h3>
+                        <p class="text-gray-600 mb-3">Cordão usado para ajustar a alva à cintura.</p>
+                        <p class="text-sm text-gray-500 italic">Representa a castidade e a prontidão para o serviço.</p>
+                    </div>
+                </div>
+
+                <!-- Amito -->
+                <div class="card">
+                    <img src="amito.jpg" alt="Amito" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Amito</h3>
+                        <p class="text-gray-600 mb-3">Pano de linho colocado ao redor do pescoço para cobrir a veste civil por baixo da alva.</p>
+                        <p class="text-sm text-gray-500 italic">Simboliza o "capacete da salvação" contra as tentações.</p>
+                    </div>
+                </div>
+
+                <!-- Estola -->
+                <div class="card">
+                    <img src="estola.jpg" alt="Estola" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Estola</h3>
+                        <p class="text-gray-600 mb-3">Insígnia de poder e autoridade sacerdotal. Tira de tecido longa que cai reta sobre os ombros do sacerdote.</p>
+                        <p class="text-sm text-gray-500 italic">O diácono a usa transversalmente, do ombro esquerdo à cintura direita.</p>
+                    </div>
+                </div>
+
+                <!-- Casula -->
+                <div class="card">
+                    <img src="casula.jpg" alt="Casula" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Casula</h3>
+                        <p class="text-gray-600 mb-3">Manto solene e amplo usado exclusivamente pelo sacerdote sobre a alva e estola durante a Missa.</p>
+                        <p class="text-sm text-gray-500 italic">Simboliza o "jugo do Senhor" e a caridade que envolve o ministério sacerdotal.</p>
+                    </div>
+                </div>
+
+                <!-- Dalmática -->
+                <div class="card">
+                    <img src="dalmática.jpg" alt="Dalmática" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Dalmática</h3>
+                        <p class="text-gray-600 mb-3">Veste própria do diácono, com mangas e aberta lateralmente.</p>
+                        <p class="text-sm text-gray-500 italic">Significa a alegria e o serviço generoso à comunidade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- VESTES DE COROINHAS -->
+    <section class="content-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="category-title">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Vestes de Coroinhas e Acólitos</h2>
+                <p class="text-lg md:text-xl opacity-90">Vestimentas que expressam a sacralidade do serviço ao altar</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Túnica de Coroinha -->
+                <div class="card">
+                    <img src="coroinhas.jpg" alt="Túnica de Coroinha" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Túnica de Coroinha</h3>
+                        <p class="text-gray-600 mb-3">Veste branca e longa que cobre todo o corpo, simbolizando pureza da alma e vida nova no Batismo.</p>
+                        <p class="text-sm text-gray-500 italic">Em algumas comunidades, usam túnica vermelha (sangue de Cristo) por baixo de sobrepeliz branca.</p>
+                    </div>
+                </div>
+
+                <!-- Batina -->
+                <div class="card">
+                    <img src="batina.jpg" alt="Batina" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Batina (Sotaina)</h3>
+                        <p class="text-gray-600 mb-3">Hábito talar preto usado por cerimoniários e acólitos. Representa morte para as vaidades do mundo.</p>
+                        <p class="text-sm text-gray-500 italic">Possui 33 botões frontais (anos de Cristo) e 5 nos punhos (cinco chagas).</p>
+                    </div>
+                </div>
+
+                <!-- Sobrepeliz -->
+                <div class="card">
+                    <img src="sobrepeliz.jpg" alt="Sobrepeliz" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Sobrepeliz</h3>
+                        <p class="text-gray-600 mb-3">Veste branca de linho, mais curta que a alva, com mangas largas. Vestida sempre sobre a batina.</p>
+                        <p class="text-sm text-gray-500 italic">Veste característica do cerimoniário - responsável por coordenar os movimentos da liturgia.</p>
+                    </div>
+                </div>
+
+                <!-- Faixa -->
+                <div class="card">
+                    <img src="faixa.jpg" alt="Faixa" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Faixa</h3>
+                        <p class="text-gray-600 mb-3">Utilizada na cintura sobre a batina.</p>
+                        <p class="text-sm text-gray-500 italic">Simboliza a prontidão para o serviço e a continência.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- INSÍGNIAS EPISCOPAIS -->
+    <section class="content-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="category-title">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Insígnias Episcopais</h2>
+                <p class="text-lg md:text-xl opacity-90">Sinais de Pastoreio e Sucessão Apostólica dos Bispos</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Báculo -->
+                <div class="card">
+                    <img src="baculo.jpg" alt="Báculo" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Báculo</h3>
+                        <p class="text-gray-600 mb-3">Cajado que identifica o bispo como o Bom Pastor que guia e protege seu rebanho.</p>
+                        <p class="text-sm text-gray-500 italic">Usado em procissões, proclamação do evangelho e homilia.</p>
+                    </div>
+                </div>
+
+                <!-- Mitra -->
+                <div class="card">
+                    <img src="mitria.jpg" alt="Mitra" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Mitria</h3>
+                        <p class="text-gray-600 mb-3">Cobertura para a cabeça com duas faces simbolizando Antigo e Novo Testamento.</p>
+                        <p class="text-sm text-gray-500 italic">Representa a "coroa da salvação" e a sabedoria que deve adornar o prelado.</p>
+                    </div>
+                </div>
+
+                <!-- Anel Episcopal -->
+                <div class="card">
+                    <img src="anel.jpg" alt="Anel Episcopal" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Anel Episcopal</h3>
+                        <p class="text-gray-600 mb-3">Símbolo da fidelidade e união mística do bispo com sua diocese, sua "esposa" espiritual.</p>
+                        <p class="text-sm text-gray-500 italic">Usado constantemente no dedo anelar direito.</p>
+                    </div>
+                </div>
+
+                <!-- Cruz Peitoral -->
+                <div class="card">
+                    <img src="cruzpeitoraç.jpg" alt="Cruz Peitoral" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Cruz Peitoral</h3>
+                        <p class="text-gray-600 mb-3">Suspensa por cordão ou corrente, sinal da fé no mistério pascal.</p>
+                        <p class="text-sm text-gray-500 italic">Compromisso em carregar a cruz de Cristo diariamente.</p>
+                    </div>
+                </div>
+
+                <!-- Solidéu -->
+                <div class="card">
+                    <img src="solidel.jpg" alt="Solidéu" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Solidéu</h3>
+                        <p class="text-gray-600 mb-3">Pequeno barrete que cobre a tonsura, retirado apenas diante do Santíssimo Sacramento.</p>
+                        <p class="text-sm text-gray-500 italic">Soli Deo - significa humildade total diante de Deus.</p>
+                    </div>
+                </div>
+
+                <!-- Pálio -->
+                <div class="card">
+                    <img src="palio.jpg" alt="Pálio" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Pálio</h3>
+                        <p class="text-gray-600 mb-3">Faixa de lã branca com seis cruzes negras, usada pelo Papa e arcebispos metropolitanos.</p>
+                        <p class="text-sm text-gray-500 italic">Simboliza a ovelha perdida carregada nos ombros do pastor e comunhão com a Sé de Pedro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- INSTRUMENTOS PROCESSIONAIS -->
+    <section class="content-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="category-title">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Instrumentos Processionais e Rituais</h2>
+                <p class="text-lg md:text-xl opacity-90">Objetos que auxiliam na criação de uma atmosfera de reverência</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Turíbulo -->
+                <div class="card">
+                    <img src="turibulo.jpg" alt="Turíbulo" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Turíbulo</h3>
+                        <p class="text-gray-600 mb-3">Vaso metálico suspenso por correntes onde se queima incenso sobre brasas.</p>
+                        <p class="text-sm text-gray-500 italic">A fumaça simboliza a oração dos fiéis que se eleva a Deus (Salmo 140).</p>
+                    </div>
+                </div>
+
+                <!-- Naveta -->
+                <div class="card">
+                    <img src="naveta.jpg" alt="Naveta" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Naveta</h3>
+                        <p class="text-gray-600 mb-3">Pequeno recipiente em forma de barco que contém os grãos de incenso.</p>
+                        <p class="text-sm text-gray-500 italic">Os grãos são retirados e colocados no turíbulo pelo sacerdote.</p>
+                    </div>
+                </div>
+
+                <!-- Aspersório -->
+                <div class="card">
+                    <img src="asperssório.jpg" alt="Aspersório" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Aspersório (Hissopo)</h3>
+                        <p class="text-gray-600 mb-3">Instrumento utilizado para aspergir água benta sobre pessoas e objetos.</p>
+                        <p class="text-sm text-gray-500 italic">Recorda o Batismo e a purificação. Usado com a caldeirinha.</p>
+                    </div>
+                </div>
+
+                <!-- Sineta / Carrilhão -->
+                <div class="card">
+                    <img src="campa.jpg" alt="Sineta" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Campa / Carrilhão</h3>
+                        <p class="text-gray-600 mb-3">Tocados durante a consagração, no momento da elevação da Hóstia e do Cálice.</p>
+                        <p class="text-sm text-gray-500 italic">Despertam a atenção dos fiéis para o milagre que ocorre no altar.</p>
+                    </div>
+                </div>
+
+                <!-- Cruz Processional -->
+                <div class="card">
+                    <img src="cruzprocessional.jpg" alt="Cruz Processional" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Cruz Processional</h3>
+                        <p class="text-gray-600 mb-3">Cruz montada em haste longa, carregada à frente das procissões litúrgicas.</p>
+                        <p class="text-sm text-gray-500 italic">Simboliza Cristo que vai à frente guiando seu povo. Sinal da vitória pascal.</p>
+                    </div>
+                </div>
+
+                <!-- Tochas -->
+                <div class="card">
+                    <img src="tochas.jpg" alt="Tochas" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Tochas </h3>
+                        <p class="text-gray-600 mb-3">Velas grandes carregadas por acólitos em procissões e momentos solenes da celebração.</p>
+                        <p class="text-sm text-gray-500 italic">Representam Cristo, Luz do mundo. Honram a presença de Deus e dão solenidade ao rito.</p>
+                    </div>
+                </div>
+
+                <!-- Matraca -->
+                <div class="card">
+                    <img src="matraca.jpg" alt="Matraca" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Matraca</h3>
+                        <p class="text-gray-600 mb-3">Instrumento de madeira que emite som seco, usado na Semana Santa quando os sinos são silenciados.</p>
+                        <p class="text-sm text-gray-500 italic">Sinal de luto pela morte de Cristo, som austero e solene.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- MOBILIÁRIO LITÚRGICO -->
+    <section class="content-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="category-title">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Mobiliário Litúrgico</h2>
+                <p class="text-lg md:text-xl opacity-90">Elementos constitutivos do espaço sagrado</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Altar -->
+                <div class="card">
+                    <img src="altar.jpg" alt="Altar" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Altar</h3>
+                        <p class="text-gray-600 mb-3">Mesa central, preferencialmente de pedra ou material nobre, onde se realiza o mistério eucarístico.</p>
+                        <p class="text-sm text-gray-500 italic">Simboliza Cristo, a Pedra Viva, e a mesa da Última Ceia.</p>
+                    </div>
+                </div>
+
+                <!-- Ambão -->
+                <div class="card">
+                    <img src="ambão.jpg" alt="Ambão" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Ambão</h3>
+                        <p class="text-gray-600 mb-3">Estante elevada destinada à proclamação das leituras bíblicas.</p>
+                        <p class="text-sm text-gray-500 italic">Representa a "Mesa da Palavra" e o sepulcro vazio de onde foi anunciada a Ressurreição.</p>
+                    </div>
+                </div>
+
+                <!-- Sacrário -->
+                <div class="card">
+                    <img src="sacrario.jpg" alt="Sacrário" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Sacrário (Tabernáculo)</h3>
+                        <p class="text-gray-600 mb-3">Espaço seguro para reserva das hóstias consagradas.</p>
+                        <p class="text-sm text-gray-500 italic">Representa a "Tenda de Deus entre os homens" e a presença real permanente de Cristo.</p>
+                    </div>
+                </div>
+
+                <!-- Credência -->
+                <div class="card">
+                    <img src="credencia.jpg" alt="Credência" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Credência</h3>
+                        <p class="text-gray-600 mb-3">Mesa de apoio lateral situada no presbitério, suporte para vasos e objetos usados na celebração.</p>
+                        <p class="text-sm text-gray-500 italic">Garante ordem e decoro no manuseio das espécies eucarísticas.</p>
+                    </div>
+                </div>
+
+                <!-- Batistério -->
+                <div class="card">
+                    <img src="batistério.jpg" alt="Batistério" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Batistério</h3>
+                        <p class="text-gray-600 mb-3">Lugar ou pia reservada à celebração do Sacramento do Batismo.</p>
+                        <p class="text-sm text-gray-500 italic">Simboliza o útero da Igreja e a fonte de vida nova em Cristo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- LIVROS LITÚRGICOS -->
+    <section class="content-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="category-title">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Livros Litúrgicos</h2>
+                <p class="text-lg md:text-xl opacity-90">A Palavra Transcrita para o Culto - objetos sagrados que portam a Revelação Divina</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Missal Romano -->
+                <div class="card">
+                    <img src="missal.jpg" alt="Missal Romano" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Missal Romano</h3>
+                        <p class="text-gray-600 mb-3">Livro que contém o rito completo da Missa, incluindo orações presidenciais e rubricas.</p>
+                        <p class="text-sm text-gray-500 italic">Guia completo para a celebração eucarística.</p>
+                    </div>
+                </div>
+
+                <!-- Evangeliário -->
+                <div class="card">
+                    <img src="evangeliário.jpg" alt="Evangeliário" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Evangeliário</h3>
+                        <p class="text-gray-600 mb-3">Livro de maior dignidade, ricamente encadernado, com trechos do Evangelho para domingos e festas.</p>
+                        <p class="text-sm text-gray-500 italic">Levado na procissão de entrada e beijado pelo celebrante após a proclamação.</p>
+                    </div>
+                </div>
+
+                <!-- Lecionário -->
+                <div class="card">
+                    <img src="Lecionario.jpg" alt="Lecionário" class="card-image">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Lecionário</h3>
+                        <p class="text-gray-600 mb-3">Livro com leituras bíblicas: Antigo Testamento, Salmos e Epístolas.</p>
+                        <p class="text-sm text-gray-500 italic">Dividido em Dominical (Anos A, B, C), Ferial (Anos Pares/Ímpares) e Santoral.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CORES LITÚRGICAS -->
+    <section class="content-section" style="background: white;">
+        <div class="max-w-7xl mx-auto">
+            <div class="category-title">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Cores Litúrgicas</h2>
+                <p class="text-lg md:text-xl opacity-90">A estética do tempo de salvação - cores que refletem o mistério celebrado</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Branco -->
+                <div class="card" style="border-top: 6px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3" style="color: #333;">⚪ Branco</h3>
+                        <p class="text-gray-700 mb-3 font-semibold">Alegria, pureza, luz, vitória e ressurreição</p>
+                        <p class="text-gray-600">Usado em: Natal, Páscoa, Festas de Cristo, Maria e Santos não mártires</p>
+                    </div>
+                </div>
+
+                <!-- Vermelho -->
+                <div class="card" style="border-top: 6px solid #dc2626;">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-red-700">🔴 Vermelho</h3>
+                        <p class="text-gray-700 mb-3 font-semibold">Fogo do Espírito Santo, caridade e martírio</p>
+                        <p class="text-gray-600">Usado em: Pentecostes, Paixão de Cristo e festas de mártires</p>
+                    </div>
+                </div>
+
+                <!-- Verde -->
+                <div class="card" style="border-top: 6px solid #16a34a;">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-green-700">🟢 Verde</h3>
+                        <p class="text-gray-700 mb-3 font-semibold">Esperança, vida e crescimento espiritual</p>
+                        <p class="text-gray-600">Usado em: Tempo Comum (período ordinário do ano litúrgico)</p>
+                    </div>
+                </div>
+
+                <!-- Roxo -->
+                <div class="card" style="border-top: 6px solid #7c3aed;">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-purple-700">🟣 Roxo</h3>
+                        <p class="text-gray-700 mb-3 font-semibold">Penitência, conversão, espera e luto</p>
+                        <p class="text-gray-600">Usado em: Advento, Quaresma e missas de defuntos</p>
+                    </div>
+                </div>
+
+                <!-- Rosa -->
+                <div class="card" style="border-top: 6px solid #ec4899;">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-pink-700">🌸 Rosa</h3>
+                        <p class="text-gray-700 mb-3 font-semibold">Alegria moderada em tempos penitenciais</p>
+                        <p class="text-gray-600">Usado em: Domingos Gaudete (Advento) e Laetare (Quaresma)</p>
+                    </div>
+                </div>
+
+                <!-- Preto -->
+                <div class="card" style="border-top: 6px solid #1f2937;">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">⚫ Preto</h3>
+                        <p class="text-gray-700 mb-3 font-semibold">Luto e súplica pelos falecidos (uso opcional)</p>
+                        <p class="text-gray-600">Usado em: Exéquias (missas de corpo presente) e dia de Finados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let lastScroll = 0;
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            console.log('Scroll:', currentScroll); // Para debug
+            
+            // Adiciona fundo quando rolar mais de 50px
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+                console.log('Added scrolled class');
+            } else {
+                header.classList.remove('scrolled');
+                console.log('Removed scrolled class');
+            }
+            
+            // Esconde header ao rolar para baixo, mostra ao rolar para cima
+            if (currentScroll > lastScroll && currentScroll > 800) {
+                header.classList.add('hidden');
+                header.classList.remove('show');
+                console.log('Header hidden');
+            } else if (currentScroll < lastScroll) {
+                header.classList.remove('hidden');
+                header.classList.add('show');
+                console.log('Header shown');
+            }
+            
+            lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+        });
+    </script>
+
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-800 text-white py-8 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="text-lg mb-2">"A liturgia é uma antecipação do banquete eterno"</p>
+            <p class="text-sm opacity-75">Cada objeto, cada veste, cada cor nos aproxima do mistério da Redenção</p>
+        </div>
+    </footer>
+</body>
+</html>

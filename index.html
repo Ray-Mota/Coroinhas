@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Fullscreen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .section-1 {
+            background-image: url('https://images.pexels.com/photos/208277/pexels-photo-208277.jpeg?auto=compress&cs=tinysrgb&w=1920');
+        }
+
+        .section-2 {
+            background-image: url(pexels-gilmerdiaz-12106358.jpg);
+        }
+
+        .section-3 {
+            background-image: url('cerimoniarios.jpg');
+        }
+
+        .section-4 {
+            background-image: url('coroinhas.jpg');
+        }
+    </style>
+</head>
+<body>
+    <section class="section section-1">
+        <div class="content">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">Bem vindo ao <div class="text-orange-400">Guia Do Coroinha</div>
+            </h1>
+            <p class="text-xl md:text-2xl text-white">Venha conhecer e fortalecer sua fé</p>
+        </div>
+    </section>
+
+    <section class="section section-2">
+        <div class="content">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">Quer aprender mais sobre a <a href="liturgia.html">
+                <div class="text-red-600">liturgia? &#x1F448;</div>
+            </a></h2>
+            <p class="text-lg md:text-xl text-white"><a target="_blank" href="https://liturgia.cancaonova.com/pb/">Acesse as leituras do dia 
+            &#x1F448;</a></p>
+        </div>
+    </section>
+
+    <section class="section section-3">
+        <div class="content">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">Vamos conhecer mais sobre os <a class="text-black" href="ritos.html">
+                <div>ritos católicos? &#x1F448;</div>
+            </a></h2>
+            <p class="text-lg md:text-xl text-white">Juntos no amor e no serviço</p>
+        </div>
+    </section>
+
+    <section class="section section-4">
+        <div class="content">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">Você sabe quem são os <a class="text-red-500" href="coroinhas.html">coroinhas? &#x1F448;</a></h2>
+            <p class="text-lg md:text-xl text-white">Venha fazer parte da nossa família</p>
+        </div>
+    </section>
+</body>
+</html>
